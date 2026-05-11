@@ -1,23 +1,334 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>AfriTalent — Freelances</title>
- <!-- Bootstrap 5 via CDN : feuille de style -->
- <link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-rel="stylesheet">
- <!-- Votre feuille de style personnelle -->
- <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AfriTalent — Freelances</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <!-- Le contenu de la page sera ajoute ici -->
- <!-- Bootstrap 5 via CDN : script JavaScript -->
- <script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-></script>
- <!-- Votre script JavaScript -->
- <script src="js/main.js"></script>
- </body>
+
+ 
+
+  <nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="freelances.html">
+            <img src="images/WhatsApp Image 2026-04-07 at 17.41.24.jpeg" width="100" height="40" alt="Logo AfriTalent" />
+          </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link active" href="freelances.html">Freelances</a></li>
+          <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <button id="darkModeToggle" class="btn btn-sm btn-outline-secondary" aria-label="Activer le mode sombre">
+              <i class="bi bi-moon-fill"></i>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a href="contact.html" class="btn btn-primary btn-sm">Rejoindre AfriTalent</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+  <main>
+
+
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h1 class="section-titre">Nos freelances</h1>
+    <p>Découvrez les talents disponibles sur AfriTalent. Filtrez par catégorie pour trouver le profil idéal.</p>
+  </div>
+</section>
+
+
+
+<section class="py-3">
+  <div class="container">
+    <div class="d-flex flex-wrap gap-2 justify-content-center" id="filtres">
+      
+      <button class="btn btn-primary btn-filtre" data-filtre="tous">Tous</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="dev-web">Développement Web</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="design">Design UI/UX</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="marketing">Marketing Digital</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="data">Data & IA</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="redaction">Rédaction Tech</button>
+      <button class="btn btn-outline-primary btn-filtre" data-filtre="devops">DevOps & Cloud</button>
+    </div>
+  </div>
+</section>
+
+<section class="py-4">
+  <div class="container">
+    <div class="row g-4" id="grille-freelances">
+
+     
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="dev-web">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/76f5a322677777bc0635cb9f564b9ad1.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Kofi Olomide</h2>
+            <p class="text-primary fw-bold">Développement Web</p>
+            <p class="card-text">Développeur frontend passionné, spécialisé en React et Bootstrap. 3 ans d'expérience.</p>
+            <p><i class="FCFA"></i> 25 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+     
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="design">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/f19e9a0d8a4726cd33b479cc084d7b6a.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Fatou Ndiaye</h2>
+            <p class="text-primary fw-bold">Design UI/UX</p>
+            <p class="card-text">Designer créative spécialisée en interfaces mobiles et branding. Figma experte.</p>
+            <p><i class="FCFA"></i> 20 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="marketing">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/69c7bf155826ad6835ca2bfa626f8b5f.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Yemi Alade</h2>
+            <p class="text-primary fw-bold">Marketing Digital</p>
+            <p class="card-text">Expert en campagnes SEO et réseaux sociaux. Plus de 50 clients satisfaits.</p>
+            <p><i class="FCFA"></i> 18 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+    
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="data">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/a9217f43edd88f18a5bdbc480aa4d8e4.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Amara Keita</h2>
+            <p class="text-primary fw-bold">Data & IA</p>
+            <p class="card-text">Data scientist Python & TensorFlow. Analyse de données et modèles de ML.</p>
+            <p><i class="FCFA"></i> 35 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+     
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="redaction">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/73f6fc99381750dd0abad59712069b4f.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Michael Jackson</h2>
+            <p class="text-primary fw-bold">Rédaction Tech</p>
+            <p class="card-text">Rédactrice tech bilingue (FR/EN). Articles de blog, documentations, newsletters.</p>
+            <p><i class="FCFA"></i> 15 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="devops">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/9fcfc9a4f5bd0744a077b575a56b7ae7.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Moussa Traoré</h2>
+            <p class="text-primary fw-bold">DevOps & Cloud</p>
+            <p class="card-text">Ingénieur DevOps AWS et Docker. Déploiements CI/CD et infrastructure scalable.</p>
+            <p><i class="FCFA"></i> 40 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="dev-web">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/3558a01bfbd046ea71c5fdfc15accfa2.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Adjoua Coulibaly</h2>
+            <p class="text-primary fw-bold">Développement Web</p>
+            <p class="card-text">Développeuse fullstack Node.js & Vue.js. Passionnée par les applications web performantes.</p>
+            <p><i class="FCFA"></i> 30 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="design">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/f3b602f7908b0583a7391d36a7c637a0.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Robert Diasse</h2>
+            <p class="text-primary fw-bold">Design UI/UX</p>
+            <p class="card-text">Designer produit avec 5 ans d'expérience en startups africaines. Spécialiste Figma & Adobe XD.</p>
+            <p><i class="FCFA"></i> 22 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="col-12 col-md-6 col-lg-4 carte-freelance" data-categorie="data">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <img src="images/998818c88c562213348721eb7836abce.jpg" width="100" class="avatar-freelance">
+            <h2 class="card-title h5 mt-3">Ndèye Sarr</h2>
+            <p class="text-primary fw-bold">Data & IA</p>
+            <p class="card-text">Analyste data et spécialiste en visualisation avec Power BI et Tableau.</p>
+            <p><i class="FCFA"></i> 28 000 FCFA / heure</p>
+            <div class="etoiles mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <a href="#" class="btn btn-outline-primary btn-sm">Voir le profil</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    
+    <p id="aucun-resultat" class="text-center text-muted mt-4" style="display:none;">Aucun freelance trouvé pour cette catégorie.</p>
+  </div>
+</section>
+
+
+  </main>
+
+  
+
+  <footer class="py-5">
+    <div class="container">
+      <div class="row g-4">
+         <div class="col-12 col-md-3">
+          <h4><img src="images/WhatsApp Image 2026-04-07 at 17.41.24.jpeg" width="100" height="40" alt="Logo AfriTalent" /> AfriTalent</h4>
+          <p>La plateforme de freelance tech dédiée à l'Afrique. Talents et entreprises connectés.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5>Liens utiles</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="freelances.html">Freelances</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5>Ressources</h5>
+          <ul class="list-unstyled">
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-3">
+          <h5>Contact</h5>
+          <p><i class="bi bi-envelope"></i> contact@afritalent.com</p>
+          <p><i class="bi bi-telephone"></i> +221 77 000 00 00</p>
+          <div class="d-flex gap-3 mt-2">
+            <a href="#" aria-label="Facebook AfriTalent"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" aria-label="Twitter AfriTalent"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" aria-label="LinkedIn AfriTalent"><i class="bi bi-linkedin fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <p class="text-center mb-0">© <span id="annee"></span> AfriTalent. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+
+  <button id="btnHaut" aria-label="Retour en haut de page">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
 </html>
