@@ -60,3 +60,77 @@ if (btnHaut) {
 }
 
 
+/* 
+   COMMIT 7 — Compteurs animés + fade-in sections
+    Compteurs animés (IntersectionObserver) */
+function animerCompteur(el) {
+  const cible = parseInt(el.dataset.cible, 10);
+  const duree = 1800;
+  const pas   = 16;
+  const steps = Math.ceil(duree / pas);
+  let count   = 0;
+
+  const timer = setInterval(() => {
+    count++;
+    const val = Math.round(cible * (1 - Math.pow(1 - count / steps, 3)));
+    el.textContent = '+' + val.toLocaleString('fr-FR');
+    if (count >= steps) {
+      el.textContent = '+' + cible.toLocaleString('fr-FR');
+      clearInterval(timer);
+    }
+  }, pas);
+}
+
+const statsEls = document.querySelectorAll('.stat-nombre[data-cible]');
+
+if (statsEls.length) {
+  const obsCompteurs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animerCompteur(entry.target);
+        obsCompteurs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  statsEls.forEach(el => obsCompteurs.observe(el));
+}
+
+/* Fade-in sections au scroll */
+document.querySelectorAll('main section').forEach(section => {
+  section.classList.add('fade-in-section');
+});
+
+const obsSections = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      obsSections.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in-section').forEach(el => {
+  obsSections.observe(el);
+});
+
+/* sur plus : effet de frappe sur le titre hero
+   Le titre s'écrit lettre par lettre au chargement
+   Donne un effet vivant et moderne à la page d'accueil */
+const heroTitre = document.querySelector('.hero-titre');
+if (heroTitre) {
+  const texte  = heroTitre.textContent;
+  heroTitre.textContent = '';
+  heroTitre.style.borderRight = '2px solid currentColor';
+  let i = 0;
+  const frappe = setInterval(() => {
+    heroTitre.textContent += texte[i];
+    i++;
+    if (i >= texte.length) {
+      clearInterval(frappe);
+      heroTitre.style.borderRight = 'none';
+    }
+  }, 40);
+}
+
+
