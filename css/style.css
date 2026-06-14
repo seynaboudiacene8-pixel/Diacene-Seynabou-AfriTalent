@@ -342,3 +342,42 @@ body.dark-mode .card { background: #1e2535 !important; }
 .carte-freelance { transition: opacity .25s ease; }
 .carte-freelance.masquee { display: none !important; }
 
+/* COMMIT 5 — CSS : responsive design mobile et tablette, media queries */
+
+@media (max-width: 575px) {
+  .hero-titre { font-size: 1.8rem; }
+  .hero-sous-titre { font-size: 1rem; }
+  #hero .d-flex.gap-3 { flex-direction: column; align-items: stretch; }
+  #hero .btn { width: 100%; text-align: center; }
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-large { grid-column: span 1; }
+  .stat-nombre { font-size: 1.6rem; }
+  .temoignage-carte { padding: 1.5rem 1rem; }
+  #carouselTemoignages .carousel-control-prev,
+  #carouselTemoignages .carousel-control-next { display: none; }
+  .card-img-top { height: 160px; }
+  .carte-populaire { transform: scale(1); }
+  footer h4, footer h5 { margin-top: 1rem; }
+  #navbar .navbar-collapse {
+    background: var(--blanc);
+    padding: 1rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--ombre);
+  }
+  body.dark-mode #navbar .navbar-collapse { background: #1a1f2e; }
+}
+
+@media (max-width: 991px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-large { grid-column: span 2; }
+  .hero-img { max-width: 320px; margin: 0 auto; }
+  .carte-populaire { transform: scale(1); margin-bottom: 1rem; }
+  #carouselTemoignages .carousel-control-prev,
+  #carouselTemoignages .carousel-control-next { display: none; }
+}
+
+@media (min-width: 1200px) {
+  .bento-grid { grid-template-columns: repeat(4, 1fr); }
+  .hero-img { max-width: 460px; }
+  .carte-populaire { transform: scale(1.03); }
+}
