@@ -134,3 +134,167 @@ if (heroTitre) {
 }
 
 
+/*
+   COMMIT 8 — Filtrage freelances + validation formulaire 
+Filtrage par catégorie (freelances.html) */
+const btnsFiltres = document.querySelectorAll('#filtres .btn-filtre');
+const cartesFreel = document.querySelectorAll('.carte-freelance');
+const msgAucun    = document.getElementById('aucun-resultat');
+
+if (btnsFiltres.length && cartesFreel.length) {
+  btnsFiltres.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+      /* Bouton actif */
+      btnsFiltres.forEach(b => {
+        b.classList.remove('btn-primary');
+        b.classList.add('btn-outline-primary');
+      });
+      btn.classList.remove('btn-outline-primary');
+      btn.classList.add('btn-primary');
+
+      /* Afficher / masquer les cartes */
+      const filtre  = btn.dataset.filtre;
+      let nbVisible = 0;
+
+      cartesFreel.forEach(carte => {
+        const correspond = filtre === 'tous' || carte.dataset.categorie === filtre;
+        carte.classList.toggle('masquee', !correspond);
+        if (correspond) nbVisible++;
+      });
+
+      if (msgAucun) {
+        msgAucun.style.display = nbVisible === 0 ? 'block' : 'none';
+      }
+    });
+  });
+}
+
+/* Sur plus : compteur de résultats freelances
+   Affiche combien de freelances sont visibles après filtre
+   Ex: "3 freelances trouvés" → donne une vraie UX pro */
+function majCompteurResultats() {
+  const visibles = document.querySelectorAll('.carte-freelance:not(.masquee)');
+  let compteurEl = document.getElementById('compteur-resultats');
+
+  if (!compteurEl && cartesFreel.length) {
+    compteurEl = document.createElement('p');
+    compteurEl.id = 'compteur-resultats';
+    compteurEl.style.cssText = 'text-align:center; color:var(--gris-texte); margin-top:1rem; font-size:.9rem;';
+    const grille = document.getElementById('grille-freelances');
+    if (grille) grille.parentNode.insertBefore(compteurEl, grille);
+  }
+
+  if (compteurEl) {
+    compteurEl.textContent = visibles.length + ' freelance' + (visibles.length > 1 ? 's' : '') + ' trouvé' + (visibles.length > 1 ? 's' : '');
+  }
+}
+
+if (btnsFiltres.length) {
+  btnsFiltres.forEach(btn => {
+    btn.addEventListener('click', majCompteurResultats);
+  });
+  majCompteurResultats();
+}
+
+/*Validation formulaire contact */
+const form = document.getElementById('formulaireContact');
+
+if (form) {
+
+  function afficherErreur(id, msg) {
+    const errEl = document.getElementById('erreur-' + id);
+    const champ = document.getElementById(id);
+    if (errEl) { errEl.textContent = msg; errEl.classList.add('visible'); }
+    if (champ)   champ.classList.add('erreur');
+  }
+
+  function effacerErreur(id) {
+    const errEl = document.getElementById('erreur-' + id);
+    const champ = document.getElementById(id);
+    if (errEl) { errEl.textContent = ''; errEl.classList.remove('visible'); }
+    if (champ)   champ.classList.remove('erreur');
+  }
+
+  function emailValide(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  }
+
+  /* Effacement erreur en temps réel */
+  ['nom','prenom','email','sujet','message'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input',  () => effacerErreur(id));
+      el.addEventListener('change', () => effacerErreur(id));
+    }
+  });
+
+  /* Sur plus : compteur de caractères sur le textarea
+     Affiche en temps réel combien de caractères ont été saisis
+     Ex : "45 / 20 min" → aide l'utilisateur à savoir où il en est */
+  const messageInput = document.getElementById('message');
+  if (messageInput) {
+    const compteurMsg = document.createElement('small');
+    compteurMsg.style.cssText = 'display:block; text-align:right; color:var(--gris-texte); margin-top:.25rem;';
+    compteurMsg.textContent = '0 / 20 caractères minimum';
+    messageInput.parentNode.appendChild(compteurMsg);
+
+    messageInput.addEventListener('input', () => {
+      const len = messageInput.value.trim().length;
+      compteurMsg.textContent = len + ' / 20 caractères minimum';
+      compteurMsg.style.color = len >= 20 ? 'var(--vert)' : 'var(--gris-texte)';
+    });
+  }
+
+  /* Soumission et validation */
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    ['nom','prenom','email','sujet','message'].forEach(id => effacerErreur(id));
+
+    const nom     = document.getElementById('nom');
+    const prenom  = document.getElementById('prenom');
+    const email   = document.getElementById('email');
+    const sujet   = document.getElementById('sujet');
+    const message = document.getElementById('message');
+    let valide    = true;
+
+    /* Tous les champs requis vérifiés */
+    if (!nom.value.trim() || nom.value.trim().length < 2) {
+      afficherErreur('nom', 'Nom requis (2 caractères minimum).');
+      valide = false;
+    }
+    if (!prenom.value.trim() || prenom.value.trim().length < 2) {
+      afficherErreur('prenom', 'Prénom requis (2 caractères minimum).');
+      valide = false;
+    }
+    /* Format email vérifié par regex */
+    if (!emailValide(email.value.trim())) {
+      afficherErreur('email', 'Adresse email invalide.');
+      valide = false;
+    }
+    if (!sujet.value) {
+      afficherErreur('sujet', 'Veuillez choisir un sujet.');
+      valide = false;
+    }
+    /* Longueur minimum du message (20 caractères) */
+    if (message.value.trim().length < 20) {
+      afficherErreur('message', 'Message trop court (20 caractères minimum).');
+      valide = false;
+    }
+
+    if (!valide) {
+      form.querySelector('.erreur').focus();
+      return;
+    }
+
+    /* Message de succès après soumission */
+    form.reset();
+    form.style.display = 'none';
+    const msgSucces = document.getElementById('message-succes');
+    if (msgSucces) {
+      msgSucces.style.display = 'block';
+      msgSucces.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+}
