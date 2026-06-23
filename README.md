@@ -15,10 +15,10 @@ Promotion : L1 IAGE — ISI
 ![alt text](image-3.png)
 ![alt text](image-4.png)
 
-![Page d’accueil AfriTalent](docs/accueil.png)
+![Page d’accueil AfriTalent](![alt text](image-6.png))
 *Page d’accueil — Hero, statistiques animées, catégories de services*
 
-![Page Freelances AfriTalent](docs/freelances.png)
+![Page Freelances AfriTalent](![alt text](image-5.png))
 *Page Freelances — Catalogue filtrable par catégorie*
 
 -----
