@@ -239,6 +239,7 @@ if (form) {
     compteurMsg.textContent = '0 / 20 caractères minimum';
     messageInput.parentNode.appendChild(compteurMsg);
 
+    
     messageInput.addEventListener('input', () => {
       const len = messageInput.value.trim().length;
       compteurMsg.textContent = len + ' / 20 caractères minimum';

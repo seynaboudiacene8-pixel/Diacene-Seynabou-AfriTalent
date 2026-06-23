@@ -1,5 +1,5 @@
 /* COMMIT 3 — CSS : variables, typographie, layout général et styles de base */
-
+/* variable globale */
 :root {
   --vert:        #1a7a4a;
   --vert-clair:  #25a060;
@@ -18,7 +18,7 @@
   --radius-lg:   20px;
   --transition:  .25s ease;
 }
-
+/* variable en mode sombre */
 body.dark-mode {
   --blanc:      #1a1f2e;
   --creme:      #141824;
